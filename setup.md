@@ -47,6 +47,7 @@ directory to modify terminal and application launcher.
 ```bash
 mkdir -p ~/.config/sway
 cp /etc/sway/config ~/.config/sway/
+nvim ~/.config/sway/config
 ```
 
 ## 5. Enable Audio

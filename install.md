@@ -1,13 +1,13 @@
 # Arch Linux Installation Guide
 
-## 1. Set Console Keyboard Layout and Font (Optional)
+## 1. Set Console Keyboard Layout and Font
 
 ```sh
 loadkeys es
 setfont ter-132n
 ```
 
-## 2. Wipe NVMe Drive (Optional)
+## 2. Wipe NVMe Drive
 
 ```sh
 gdisk /dev/nvme0n1
@@ -79,7 +79,7 @@ mkdir -p /mnt/home
 mount /dev/nvme0n1p4 /mnt/home
 ```
 
-## 8. Install Arch Linux (Base System)
+## 8. Install Arch Linux
 
 ```sh
 pacstrap -K /mnt base linux linux-firmware base-devel neovim
@@ -243,4 +243,5 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ```sh
 exit
 umount -R /mnt
-s
+shutdown now
+```
