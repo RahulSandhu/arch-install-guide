@@ -26,41 +26,42 @@ makepkg -si
 
 ## 4. Install Window Manager and Dependencies
 
-Install `swayfx` and related dependencies:
+Install i3 and related dependencies:
 
 ```bash
-yay -S swayfx
-sudo pacman -S swaybg swaync xdg-utils xorg-xwayland polkit kitty wofi waybar
+sudo pacman -S xorg-server xorg-xinit i3-wm i3-gaps xdg-utils feh kitty rofi
+polybar picom polkit
 ```
 
-Inside `.zprofile`, add the following line to start `swayfx` automatically when
-logging in from `tty1`:
+Inside `~/.xinitrc`, add the following line to start i3 automatically when
+logging in from tty1:
 
 ```bash
-# If running from tty start swayfx
-[ "$(tty)" = "/dev/tty1" ] && exec sway
+# If running from tty start i3
+[ "$(tty)" = "/dev/tty1" ] && exec i3
 ```
 
-After installing SwayFX, copy the default configuration file to your home
-directory to modify terminal and application launcher.
+After installing i3, copy the default configuration file to your home directory
+to modify terminal and application launcher:
 
 ```bash
-mkdir -p ~/.config/sway
-cp /etc/sway/config ~/.config/sway/
-nvim ~/.config/sway/config
+mkdir -p ~/.config/i3
+cp /etc/i3/config ~/.config/i3/
+nvim ~/.config/i3/config
 ```
 
 ## 5. Enable Audio
 
 ```bash
-sudo pacman -S pipewire wireplumber pipewire-pulse
+sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
+alsa-utils
 systemctl --user --now enable pipewire wireplumber
 ```
 
 ## 6. Enable Bluetooth
 
 ```bash
-sudo pacman -S bluez bluez-utils blueman bluez-libs
+sudo pacman -S bluez bluez-utils bluez-libs blueman
 sudo modprobe btusb
 sudo systemctl enable bluetooth
 ```
@@ -70,11 +71,14 @@ sudo systemctl enable bluetooth
 ### General Utilities
 
 ```bash
-sudo pacman -S curl exfat-utils fuse-exfat neofetch ripgrep stow tree wget fd
-fzf tmux wl-clipboard yazi dbeaver docker github-cli openconnect r audacity
-firefox gimp kdenlive kodi libreoffice-fresh spotify-launcher vlc p7zip tar
-timeshift ufw unrar unzip zip nodejs npm trash-cli zoxide
-yay -S ttf-material-icons ttf-jetbrains-mono-nerd noto-fonts-emoji
+sudo pacman -S audacity curl dbeaver docker exfat-utils fd fzf firefox
+fuse-exfat gimp github-cli imagemagick kdenlive kodi libreoffice-fresh lua
+luajit luarocks neofetch nodejs npm noto-fonts-emoji openconnect p7zip r
+ripgrep rlwrap sed jq ssh avahi spotify-launcher stow tar timeshift tmux
+trash-cli tree ufw unrar unzip vlc wget xclip yazi zip zoxide playerctl
+brightnessctl
+luarocks install magick --local
+yay -S noto-fonts-emoji ttf-material-icons ttf-jetbrains-mono-nerd 
 ```
 
 ### LaTeX and PDF Readers

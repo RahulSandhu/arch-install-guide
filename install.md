@@ -151,7 +151,8 @@ pacman -Sy
 ## 14. Install and Enable NetworkManager
 
 ```sh
-pacman -S networkmanager networkmanager-openvpn networkmanager-pptp networkmanager-vpnc
+pacman -S networkmanager networkmanager-openvpn networkmanager-pptp
+networkmanager-vpnc
 pacman -S wireless_tools wpa_supplicant ifplugd dialog
 systemctl enable NetworkManager
 ```
@@ -201,7 +202,7 @@ systemctl enable systemd-timesyncd.service
 systemctl enable fstrim.timer
 ```
 
-## 20. Install GRUB and EFI Boot Manager (Dual Boot Support)
+## 20. Install GRUB and EFI Boot Manager
 
 ```sh
 pacman -S grub efibootmgr os-prober dosfstools mtools
@@ -228,7 +229,7 @@ Edit `/etc/default/grub`:
 
 ```sh
 nvim /etc/default/grub
-# Uncomment or add this line:
+# Uncomment this line if you want dual boot support:
 GRUB_DISABLE_OS_PROBER=false
 ```
 
