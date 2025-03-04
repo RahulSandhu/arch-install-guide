@@ -2,12 +2,18 @@
 
 ## 1. Wipe NVMe Drives
 
+Wipe `/dev/nvme0n1`:
+
 ```sh
 gdisk /dev/nvme0n1
 # Press x (Extra functionality menu)
 # Press z (Zap GPT and MBR)
 # Confirm with y twice
+```
 
+Wipe `/dev/nvme1n1`:
+
+```sh
 gdisk /dev/nvme1n1
 # Press x (Extra functionality menu)
 # Press z (Zap GPT and MBR)
